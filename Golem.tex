@@ -1,0 +1,252 @@
+\documentclass[a4paper,10pt,draft]{amsart}
+
+\input{preambolo}
+
+\begin{document}
+
+\input{auth-address}
+
+\section{Introduction}
+This paper has two aims. 
+\begin{itemize}
+\item Introduce a classification theory of categories.
+\item Give a good intuition on the notion of faithful functor.
+\end{itemize}
+This introduction is intended to motivate the urgency of these two subjects.
+
+\subsection{Faithful functors}
+
+
+For a concrete category $F: \cK \to \Set$ it is quite common to say that one can think objects of $\cK$ as sets and morphisms as functions. Although this is true for morphisms, this is not true for objects. It might happen that two objects $F(K) \cong F(K')$ are isomorphic whilst $K$ and $K'$ they are not in $\cK$, so two objects might look the same in $\Set$ althogh they are not in $\cK$. Moreover, this isomorphism might come from a map in $\cK$. This motivates, in our opinion, to say that one can confuse objects and morphisms with sets and function when the functor is conservative and faithful.
+Happily, it is quite easy to prove that for a locally small category there exists a faithful conservative functor to $\Set$ iff there exist a faithful functor to $\Set$, this is enough to say that none was wrong in first attempt, just incautious.
+
+These consideration solve this problem when we want to think as objects as sets and morphisms as function. What happen when we change this ground base? The article wants to solve this issue.
+
+\subsection{Classification theory of categories}
+
+To find conservative functors is interesting per se, a prove of this is the struggle of classical algebraic topology in proving 
+We prove that when a category is enriched on a topos $\cE$ then it has a conservative functor of $\cE$. 
+
+Let us recall that a \emph{conservative} functor is a functor reflecting the property of being invertible: more explicitly, $F \colon \cA \to \cB$ is conservative if, whenever $F(f)$ is invertible in $\cB$, then $f$ is invertible in $\cA$.
+\begin{remark}
+We record two useful properties of conservative functors:
+\begin{itemize}
+	\item A full and faithful functor is conservative;
+	\item Given a diagram 
+	\[
+		omissis
+	\]
+	where the functors $F,G$ are conservative then $H$ is conservative too.
+\end{itemize}
+\end{remark}
+\subsection{Properties of conservative functors}
+\section{Building the golem}
+\begin{definition}
+A \textit{golem} $\FG$ is a pair $(\cA,F)$ where $\cA$ is a category and $F$ a conservative functor $\cA \to \Set$.
+\end{definition}
+% \begin{remark}
+% Even though a category can be a very strange creature, and especially its morphisms might behave in unpredictable ways, a golem is a category whose nature can still be traced by a very concrete category. %Even if the thread in the sewing cannot be detected, at least golems (even though the correct Hebrew plural of \golem is \emph{glamim}) are kneaded from sets.
+% \end{remark}
+Many categories are golems, as the following proposition shows.
+\begin{theorem}
+The following classes of categories are golems: concrete toposes (\ie all Grothendieck toposes, and concrete elementary toposes) and more generally every balanced concrete category; the category $\cate{Top}$ of topological spaces and continuous functions; the category of algebras on a Lawvere theory $\bT$. 
+\end{theorem}
+\begin{remark}
+It is remarkable that an outsider in the (surely big) class of golems is the category $\cate{Hot} = \cate{Spc}[\cW^{-1}]$ obtained from a suitable category $\cate{Spc}$ of topological spaces \emph{localizing} with respect to the class $\cW$ of weak homotopy equivalences. Whitehead theorem, stating that the functor 
+\[
+\Pi \colon \cate{Hot}_* \longrightarrow \cate{Grp} \colon X \mapsto \prod_{n\ge 0} \pi_n(X,x)
+\]
+is conservative, asserts precisely that $(\cate{Hot}, \Pi)$ is a golem. This is a very interesting example since Freyd shows in \cite{Freydconc} that no faithful functor $\cate{Hot}\to \Set$ can exist.
+\end{remark}
+Proving each of the above statements (apart those about $\cate{Hot}$) is straightforward. It is in fact pretty hard to find a category which is not a golem, and there's a reason why it is so:
+\begin{theorem}[\protect{\cite[???]{}}]\label{freyd_uber_trick}
+All locally small categories are golems.
+\end{theorem}
+Freyd offers a brilliant proof for this statement based on ideas stolen from algebraic topology and very ``na\"ive'' set theory.
+
+The best way to grasp the idea is in our opinion the one that follows: we simply reconstruct the proof appearing in \cite{fconc}: the uninterested readers can skip this section.
+\subsection{Proof of \refbf{freyd_uber_trick}}
+To summarize, Freyd is able to prove the statement in a very specific toy example with pretty strong assumptions, and then get rid of them with a marvelous set-theoretic swindle, showing that those very assumptions were not necessary.
+
+The main idea is based on the following remark:
+\begin{remark}
+When a category $\cK$ is well-powered and every map in $\cK$ is a monomorphism, then $\cK$ is a golem.
+\end{remark}
+The proof of this statement is pretty tautological: the assumptions we made allow to define a functor
+\[
+\Sub \colon \cK \to \Set 
+\]
+given by $K\mapsto \Sub(K)$ (the set of all equivalence classes of monic arrows to $K$), which is a set because $\cK$ is well-powered, and a functor because every map in $\cK$ is monic (so that $\Sub$ acts as post-composition on arrows, as it should).
+
+It is easy to show that $\Sub$ is conservative: assume $f\colon K \to K'$ induces a bijection $\Sub(f) \colon \Sub(K) \to \Sub(K')$. Then $\Sub(f)$ must send a certain element $\eqc{g}$ into $\eqc{\id_{K'}}$ and $\eqc{g}=\eqc{\id_K}$; this implies that $f$ is invertible and $g=f^{-1}$.
+% Our aim here is to convince the reader that there is a deep connection between Whitehead's theorem and Frey's idea.
+
+% \subsubsection*{The idea}
+% There are many ways to show this, we want to focus on a specific idea. Consider the following.
+% \[
+% \Sub : \cK \to \Set.
+% \]
+% One could wish this to be conservative, but in fact it is not neither a functor in general. Still, it yields the winning strategy.  
+
+% Consider the subcategory $\cK^{\text{mon}}$ of $\cK$ where morphisms are just monic arrows. It turns out that now 
+% \[
+% \Sub: \cK^{\text{mon}} \to \Set
+% \]
+% is a functor and moreover it is conservative, as we shall prove now.newline 
+% Imagine that a monic arrow\footnote{to be monic is important to well define the map $\Sub(f)$. } $f: K \to K'$ induces a bijection $\Sub(f) : \Sub(K) \to \Sub(K')$. Since $\Sub(f)$ is isotonic and it is a bijection,  the maximal subobject  goes to the maximal subobject, hence we reflect isos. \newline
+
+% This proves a very partial result: 
+
+% \begin{theorem}
+% Well powered categories where every morphism is a mono are golems.
+% \end{theorem}
+
+% Unfortunately the functor we presented does not lift to $\cK$ in general. So the winning idea could be that subobjects encode all the information needed, just it's not clear how to relate them and how to fence them into a set.
+
+It is difficult to believe that these assumptions can be dropped: the proof work precisely because we have them. And yet, Freyd is able to prove that one can get rid of the assumption that every arrow is monic (ensuring then that $\Sub$ is a functor) and that the collection of a suitably defined class of \emph{generalized subobjects} $\coprod_S\cK(S,K)$ of $K$ is in fact a set after passing to a big enough quotient $\asymp$:
+\begin{definition}
+We define a relation $\asymp$ as follows on the class of all morphisms of codomain $K\in\cK$: given $f \colon X \to K$ and $g\colon Y\to K$ in $\cK$ we say that $f\asymp g$ if and only they equalize the same pairs of isomorphisms: given diagrams
+\[
+\xymatrix{
+	K \ar[r]^f & A \ar@<5pt>[r]^u\ar@<-5pt>[r]_v & B
+}
+\iff
+\xymatrix{
+	K' \ar[r]^g & A \ar@<5pt>[r]^u\ar@<-5pt>[r]_v & B
+}
+\]
+where $u,v$ are isomorphisms, this means that $u,v$ get equalized by $f$ (\ie $uf = vf$) if and only if they get equalized by $g$ (\ie $ug=vg$).
+\end{definition}
+Freyd claims now that the quotient class
+\[
+\Big(\textstyle\coprod_S \cK(S,A)\Big)/{\asymp}
+\]
+is in fact a set. The proof goes as follows:
+\[
+omissis
+\]
+\begin{remark}
+Of course, it is possible to find a non-locally small category which is a golem: let us consider the graph
+\[
+\xymatrix{\bullet \ar@<12pt>[r] \ar@<6pt>[r] \ar@<-10pt>[r] \ar@{}[r]|\vdots & \bullet}
+\]
+where there is a proper class of maps between two distinct objects; this category is trivially a golem, and yet it is, by construction, locally unsmall.\redmnote{Is this really a category and not a ``category''?}
+\end{remark}
+This paves the way to a simple and yet deep question: 
+\begin{question}
+Is there a way to classify all golems?
+\end{question}
+Freyd gives a partial answer to this:
+\begin{definition}
+omissis
+\end{definition}
+\begin{proposition}
+omissis
+\end{proposition}
+% \subsection{A characterization}
+ 
+%  Still a question is open: is it possible to find a characterization of golems?
+%  \section{Faithful Golems}
+We refine the notion of ``being a golem'' assuming that the functor that realizes the golemity of $\cK$ is also faithful.
+\begin{definition}
+A \emph{faithful golem} is a pair $\GG = (\cK, F)$ where $F$ is a faithful and conservative functor $\cK \to \Set$.
+\end{definition}\label{faith_glamim_are_concrete}
+\begin{remark}[faithful golems are made of concrete]
+The category $\cK$ is a faithful golem if and only if it is a golem and a concrete category.
+\end{remark}
+\begin{proof}
+Every faithful golem is concrete. It is then easy to show that if $F,G\colon \cK \to \Set$ are a faithful and a conservative functor respectively, then the pair $(\cK, F\times G)$ (where $F\times G \colon K \mapsto FX \times GK$) is a faithful golem.
+\end{proof}
+\begin{remark}
+There are many ways to show that $F\times G$ above is faithful and conservative, all based on the evident fact that the functor $\prod_{i\in I}\colon \Set^I \to \Set$ is faithful and conservative. Since in a while we will try to generalize the above definitions straying away from the category of sets, we record in a separate lemma that there is a formal reason why $\prod_{i\in I}$ turns $\Set^I$ into a faithful golem.
+\end{remark}
+\begin{lemma}
+Let $F\dashv G$ be an adjunction where $F \colon \cC \to \cD$. Then $G$ is conservative if and only if the counit $\varepsilon \colon FG \Rightarrow \id_{\cD}$ are component-wise extremal epimorphisms.
+\end{lemma}
+\redmnote{Charact. of the `glamimic' adjunctions}
+The counit to consider in the case of products is, of course, the `constant $\dashv$ limit' adjunction 
+\[
+\xymatrix{
+	\Set \ar@<5pt>[r]^\Delta \ar@{}[r]|\perp & \ar@<5pt>[l]^{\prod_{i\in I}} \Set^I.
+}
+\]
+\subsection{A few categorical properties of golems}
+\redmnote{the category of golems; functor $V-Glm \to W-Glm$ induced by a conservative functor $\Phi : V \to W$; \dots}
+If we change the category on which we want $\cK$ to have a conservative functor, we obtain the notion of a $\cV$-golem: in this terminology, golems are precisely $\Set$-golems and the category of sets has the property that every locally small category is a $\Set$-golem.
+
+There is in fact not much to say about the `category' $\cate{Glm}$ of golems, given that it contains every locally small category $\cK$; the most we can say is that $\cate{Glm}$ is pretty much identical to the subcategory of $\cate{Cat}$ whose 1-cells are conservative functors. By duality instead, the fact that a given category is such that every other is a $\cV$-golem is a pretty strong property for $\cV$: we concentrate on the study of these categories calling them \emph{grounds} (\grounds).
+\section{Grounding the golem}
+\begin{definition}
+A \emph{ground} is a category that admits a conservative functor from every locally small category.
+\end{definition}
+\begin{remark}
+In this terminology, Freyd's original claim is that $\Set$ is a ground.
+\end{remark}
+\begin{remark}
+The intuition behind the definition is that 
+\[
+omissis
+\]
+Several categories are grounds. The category $\Set$ is a ground; every category of models for a Lawvere theory is a ground; the category of topological spaces is a ground; If $\cE$ is a $\cV$-golem and a ground, then $\cV$ is a ground (this is really an absorption property).
+\[
+omissis
+\]
+\end{remark}
+\subsection{Closure properties of grounds}
+\begin{proposition}
+The category of grounds is closed under \emph{non-empty} products and coproducts.
+\end{proposition}
+\begin{proof}
+Easy; of course neither the empty category nor the terminal category are grounds, so we must assume that the family $\{\cE_i\}$ of which we want to take the co/product is non empty.
+\end{proof}
+\[
+omissis
+\]
+\subsection{The poset of categorical complexity}
+\begin{definition}
+We define a preorder relation on $\cate{CAT}$ by
+\[
+\cA \preceq \cB \iff \cA \text{ is a $\cB$-golem}. 
+\]
+\end{definition}
+\begin{proposition}
+$(\cate{CAT},\preceq)$ is a preset.
+\end{proposition}
+\begin{proof}
+Of course, $(\cA, \id_{\cA})$ is a golem
+\end{proof}
+As customary, there is a universal construction to pass from a preset $P$ to the initial poset on which $P$ projects; here, we apply this construction to turn $\bf CAT$ into a posetal class, with an order induced by quotienting for $\cA \sim \cB \iff \cA \preceq \cB \preceq \cA$; we denote the elements of the poset $(\cate{CAT},\le)$ as 
+\[
+\{\eqc{\cA} \mid \cA \in\bf CAT\}.
+\] 
+\begin{remark}
+Intuitively speaking, $\le$ orders the objects of $\bf CAT$ by \emph{complexity}: $\cA \le \cB$ means that $\cB$ contains the structure of $\cA$ faithfully and in a way that is mindful of its isomorphism classes.
+\end{remark}
+\begin{remark}
+The element $\eqc{\Set}$ contains all grounds, and this is the top element of $(\mathbb{CAT},\le)$.
+\end{remark}
+\section{Faithful golems}
+\adef\refbf{}, \refbf{} can be strengthened to the setting of faithful golems: define a preorder relation $\preceq_\textsc{f}$ on $\bf CAT$ by
+\[
+\cA \preceq_\textsc{f} \cB \iff \cA \text{is a faithful $\cB$-golem} .
+\]
+\begin{remark}
+If we quotient the preorder to make it a partial order, as a corollary of \cite{Freydconc}, $\eqc{\Set}$ fails to be a faithful ground because the fact that `homotopy is not concrete' entails that $\eqc{\cate{HTop}} \not\le \eqc{\Set}$. 
+
+Nonetheless, it's easy to prove that $\eqc{\Set} \le \eqc{\cate{HTop}}$.
+\end{remark}
+
+% So we get to the final question:
+
+% > Q3: "Is $\bf HTop$ on the top"? More generally, how do we characterize *faithful earths*, i.e. maximal elements of $(\mathbb{CAT},\le_\text{F})$ (if they exist, do they?)?
+
+% \section{The preset of undergrounds}
+\section{Enriching the golem}
+With the definition of a $\cV$-golem it is pretty natural to ask whether \refbf{} remains true in enriched setting: under which assumptions, `trivially' verified by $\Set$, is every $\cV$-category a $\cV$-golem?
+\[
+omissis
+\]
+\hrulefill
+\bibliography{allofthem}{}
+\bibliographystyle{amsalpha}
+\end{document}
